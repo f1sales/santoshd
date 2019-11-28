@@ -31,6 +31,7 @@ module Santoshd
           phone: parsed_email['telefone'].tr('^0-9', ''),
           email: parsed_email['email']
         },
+        message: parsed_email['mensagem'],
         product: parsed_email['veculo'],
       }
     end

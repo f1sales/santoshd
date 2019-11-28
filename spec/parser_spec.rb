@@ -31,8 +31,14 @@ RSpec.describe F1SalesCustom::Email::Parser do
       expect(parsed_email[:customer][:phone]).to eq('13997335346')
     end
 
+
     it 'contains product' do
       expect(parsed_email[:product]).to eq('- IRON 883¿')
     end
+
+    it 'contains messange' do
+      expect(parsed_email[:message]).to eq('teste de email')
+    end
+
   end
 end
