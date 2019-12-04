@@ -21,7 +21,6 @@ module Santoshd
   class F1SalesCustom::Email::Parser
     def parse
       parsed_email = @email.body.colons_to_hash(/(Telefone|Nome|E-mail|Data de envio|Veículo|Site|Mensagem|Data).*?:/, false)
-      puts parsed_email
 
       {
         source: {
@@ -33,7 +32,7 @@ module Santoshd
           email: parsed_email['email']
         },
         message: parsed_email['mensagem'],
-        product: parsed_email['veculo'],
+        product: (parsed_email['veculo'] || ''),
       }
     end
   end
