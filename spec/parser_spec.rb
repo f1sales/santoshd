@@ -8,7 +8,7 @@ RSpec.describe F1SalesCustom::Email::Parser do
       email = OpenStruct.new
       email.to = [email: 'website@lojateste.f1sales.org'],
       email.subject = 'Contato | santoshd.com.br',
-      email.body = "Contato Site | santoshd.com.br\n*Nome:* Leonardo Assennato\n*E-mail:* leonardo@dspa.com.br\n*Telefone:* (13)9973-35346\n*Mensagem:* teste de email\n*Veículo:* - IRON 883¿\n*Data de envio:* 26/11/2019 11:32:00"
+      email.body = "Contato Site | santoshd.com.br\n\nNome:\t Antônio Cláudio\t\nE-mail:\t acmabreu@hotmail.com.br\t\nTelefone:\t (11)9832-55498\t\nMensagem:\t Boa noite, Favor informar se harley santos tem o\nacabamento cromado do pára-lama traseiro da harley de luxe 2017,qual o\npreço a vista e se despacha para Mogi das Cruzes SP. Att\t\nVeículo:\t - IRON 883¿\t\nData de envio:\t 03/12/2019 21:42:34"
 
       email
     }
@@ -20,15 +20,15 @@ RSpec.describe F1SalesCustom::Email::Parser do
     end
 
     it 'contains name' do
-      expect(parsed_email[:customer][:name]).to eq('Leonardo Assennato')
+      expect(parsed_email[:customer][:name]).to eq('Antônio Cláudio')
     end
 
     it 'contains email' do
-      expect(parsed_email[:customer][:email]).to eq('leonardo@dspa.com.br')
+      expect(parsed_email[:customer][:email]).to eq('acmabreu@hotmail.com.br')
     end
 
     it 'contains phone' do
-      expect(parsed_email[:customer][:phone]).to eq('13997335346')
+      expect(parsed_email[:customer][:phone]).to eq('11983255498')
     end
 
 
@@ -37,7 +37,7 @@ RSpec.describe F1SalesCustom::Email::Parser do
     end
 
     it 'contains messange' do
-      expect(parsed_email[:message]).to eq('teste de email')
+      expect(parsed_email[:message]).to eq("Boa noite, Favor informar se harley santos tem o\nacabamento cromado do pára-lama traseiro da harley de luxe 2017,qual o\npreço a vista e se despacha para Mogi das Cruzes SP. Att")
     end
 
   end
